@@ -5,12 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    totalAmount: 0
   },
   mutations: {
-
+    aumentar(state){
+      state.totalAmount++
+    }
   },
   actions: {
-
   }
 })

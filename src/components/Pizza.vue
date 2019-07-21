@@ -22,23 +22,32 @@
         </div>
       </div>
     </div>
-    <h2>Componente padre: {{ priceGlobal }}</h2>
-    <button class="btn btn-primary" @click="priceGlobal++">+</button>
-    <Pizzaprice :price="priceGlobal" @nombreHijo="nombreFather = $event"></Pizzaprice>
+    <h2>Precio Total: {{ $store.state.totalAmount }}</h2>
+    
+    <Pizzaprice :price="totalAmount" @nombreHijo="nombreFather = $event"></Pizzaprice>
   </section>
 </template>
 
 <script>
+
+import {mapState} from 'vuex';
+import {mapMutations} from 'vuex';
+
 import Pizzaprice from './Pizzaprice.vue';
 export default {
   name: "Pizza",
+  computed: {
+    ...mapState(['totalAmount'])
+  },
+  methods: {
+    ...mapMutations(['aumentar'])
+  },
   props: {},
   components : {
     Pizzaprice
   },
   data() {
     return {
-      priceGlobal: 0,
       nombreFather: '',
       pizzas: [
         {
