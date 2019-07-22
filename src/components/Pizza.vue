@@ -14,7 +14,17 @@
               </div>
               <h5 class="card-title">{{ pizza.name }}</h5>
               <p class="card-text">{{ pizza.description }}</p>
-              <button class="btn btn-primary" @click="addPizza(pizza)">Agregar</button>
+              <div class="row">
+                <div class="col-4">
+                  <button class="btn btn-danger btn-small" @click="deletePizza(pizza)">-</button>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="input-group">
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-success btn-small" @click="addPizza(pizza)">+</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -39,7 +49,7 @@ export default {
    
   },
   methods: {
-    ...mapMutations(['aumentar','addPizza']),
+    ...mapMutations(['aumentar','addPizza','incrementCountByPizzaType','deletePizza']),
     // ...mapActions(['addPizza'])
   },
   props: {},

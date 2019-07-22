@@ -37,7 +37,6 @@ export default new Vuex.Store({
         precio: 5900
       }
     ],
-    totalAmount: 0,
     orderPizzas: []
   },
   // getters: {
@@ -49,9 +48,16 @@ export default new Vuex.Store({
     // aumentar(state){
     //   state.totalAmount++
     // },
+    incrementCountByPizzaType() {
+      console.log("hola")
+      // if (pizza.name === state.orderPizzas.pizza.name){
+      //   console.log("Pizzas coinciden")
+      // }
+    },
     addPizza(state,pizza){
       state.orderPizzas.push(pizza)
       state.totalAmount += pizza.precio
+      // this.incrementCountByPizzaType()
     },
     deletePizza(state,pizza){
       state.orderPizzas.splice(pizza,1)
