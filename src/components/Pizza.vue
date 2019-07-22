@@ -10,19 +10,17 @@
             <img :src="pizza.img" class="card-img-top">
             <div class="card-body">
               <div class="circle-price">
-                <div class="mini-circle"></div>
+                <div class="mini-circle">{{pizza.precio}}</div>
               </div>
-
               <h5 class="card-title">{{ pizza.name }}</h5>
               <p class="card-text">{{ pizza.description }}</p>
-              <span>{{ pizza.precio }}</span>
-              <div class="button-panel"></div>
+              <button class="btn btn-primary" @click="addPizza(pizza)">Agregar</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <h2>Precio Total: {{ $store.state.totalAmount }}</h2>
+    <h2>Precio Total: {{ totalAmount }}</h2>
     
     <Pizzaprice :price="totalAmount" @nombreHijo="nombreFather = $event"></Pizzaprice>
   </section>
@@ -37,10 +35,12 @@ import Pizzaprice from './Pizzaprice.vue';
 export default {
   name: "Pizza",
   computed: {
-    ...mapState(['totalAmount'])
+    ...mapState(['totalAmount','pizzas'])
+   
   },
   methods: {
-    ...mapMutations(['aumentar'])
+    ...mapMutations(['aumentar','addPizza']),
+    // ...mapActions(['addPizza'])
   },
   props: {},
   components : {
@@ -49,65 +49,7 @@ export default {
   data() {
     return {
       nombreFather: '',
-      pizzas: [
-        {
-          name: "Margarita",
-          description: "divina",
-          img: require('@/assets/pizzas/Margarita.jpg'), 
-          precio: 4000,
-          detalle: [
-            { tamaño: "mediana", precio: 4000 },
-            { tamaño: "grande", precio: 5100 }
-          ]
-        },
-        {
-          name: "Jamón y Queso",
-          description: "extasiante",
-          img: require('@/assets/pizzas/Pepperoni.jpg')
-        },
-        {
-          name: "Napolitana",
-          description: "adiktiva",
-          img: require("@/assets/pizzas/Napolitana.jpg"),
-          detalle: [
-            { tamaño: "mediana", precio: 4400 },
-            { tamaño: "grande", precio: 5600 }
-          ]
-        },
-        {
-          name: "Veggy",
-          description: "Saludable",
-          img: require("@/assets/pizzas/Veggy.jpg"),
-          detalle: [
-            { tamaño: "mediana", precio: 4800 },
-            { tamaño: "grande", precio: 5900 }
-          ]
-        },
-        {
-          name: "Pepperoni",
-          description: "viciadora",
-          img: require("@/assets/pizzas/Pepperoni.jpg"),
-          detalle: [
-            { tamaño: "mediana", precio: 5600 },
-            { tamaño: "grande", precio: 6900 }
-          ]
-        },
-        {
-          name: "Funghi",
-          description: "jugosa con extra queso",
-          img: require("@/assets/pizzas/Funghi.jpg"),
-          detalle: [
-            { tamaño: "mediana", precio: 5900 },
-            { tamaño: "grande", precio: 7700 }
-          ]
-        },
-        {
-          name: "Calzone",
-          description: "",
-          img: "assets/images/pizza-margarita.jpg",
-          detalle: [{ tamaño: "mediana", precio: 4000 }]
-        }
-      ]
+      
     };
   }
 };
@@ -156,6 +98,9 @@ section.pizzas {
             top: 2px;
             border: 2px solid yellow;
             z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
       }

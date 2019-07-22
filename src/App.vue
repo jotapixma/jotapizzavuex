@@ -1,20 +1,21 @@
 <template>
-  <div id="app">
+  <div id="app" class="container-fluid">
     <Pizza></Pizza>
-    <!-- <Bill/> -->
+    <Bill/>
   </div>
 </template>
 
 <script>
 import Pizza from './components/Pizza.vue';
+import Bill from './components/Bill.vue'
 // import Pizzaprice from './components/Pizzaprice.vue';
 
-// import Bill from './components/Bill.vue'
 
 export default {
   name: 'app',
   components: {
-    Pizza
+    Pizza,
+    Bill
   }
 }
 </script>
