@@ -37,7 +37,8 @@ export default new Vuex.Store({
         precio: 5900
       }
     ],
-    orderPizzas: []
+    orderPizzas: [],
+    totalAmount: 0
   },
   // getters: {
   //   publicOrder(state){
@@ -59,9 +60,11 @@ export default new Vuex.Store({
       state.totalAmount += pizza.precio
       // this.incrementCountByPizzaType()
     },
-    deletePizza(state,pizza){
-      state.orderPizzas.splice(pizza,1)
-      state.totalAmount -= pizza.precio
+    deletePizza(state,index){
+      console.log(index)
+      state.orderPizzas.splice(index,1)
+
+      // state.totalAmount -= pizza.precio
     }
   },
   actions: {
