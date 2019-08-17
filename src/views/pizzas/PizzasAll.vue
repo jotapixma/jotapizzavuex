@@ -1,27 +1,32 @@
 <template>
-  <section class="pizzas" id="pizzas">
-    <div class="container">
-      <div id="app-card">
-        <h3 class="title">Nuestras Pizzas</h3>
-        <div class="card-deck">
-          <div class="card" v-for="pizza in $store.state.pizzas" v-bind:key="pizza.id" >
-            <img :src="pizza.img" class="card-img-top" @click="goToRoute(pizza)">
-            <div class="card-body">
-              <h5 class="card-title">{{ pizza.name }}</h5>
-              <p class="card-text">{{ pizza.description }}</p>
-              
+  <div>
+    <!-- <section class="pizzas" id="pizzas">
+      <div class="container">
+        <div id="app-card">
+          <h3 class="title">Nuestras Pizzas</h3>
+          <div class="card-deck">
+            <div class="card" v-for="pizza in $store.state.pizzas" v-bind:key="pizza.id" >
+              <img :src="pizza.img" class="card-img-top" @click="goToRoute(pizza)">
+              <div class="card-body">
+                <h5 class="card-title">{{ pizza.name }}</h5>
+                <p class="card-text">{{ pizza.description }}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section> -->
+    <router-link :to=" {name: 'pizzas::id', params: { id : pizza.id, payload: {pizza} } }"
+      v-for="pizza of $store.state.pizzas" v-bind:key="pizza.id">
+      <button>pizza {{pizza.id}}</button>
+    </router-link> 
+    <!-- <PizzaSingle/> -->
+  </div>
 </template>
 
 <script>
 
-// import {mapState} from 'vuex';
-// import PizzaSingle from "@/components/PizzaSingle.vue"
+// import PizzaSingle from '@/components/PizzaSingle.vue';
 
 export default {
   name: "PizzasAll",
