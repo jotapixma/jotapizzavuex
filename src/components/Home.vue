@@ -29,10 +29,10 @@
           </div>
         </div>
       </div>
+      <Bill/>
+      <h2>Precio Total: {{ totalAmount }}</h2>
+      <Pizzaprice :price="totalAmount" @nombreHijo="nombreFather = $event"></Pizzaprice>
     </div>
-    <h2>Precio Total: {{ totalAmount }}</h2>
-    
-    <Pizzaprice :price="totalAmount" @nombreHijo="nombreFather = $event"></Pizzaprice>
   </section>
 </template>
 
@@ -42,11 +42,12 @@ import {mapState} from 'vuex';
 import {mapMutations} from 'vuex';
 
 import Pizzaprice from './Pizzaprice.vue';
+import Bill from './Bill.vue';
+
 export default {
-  name: "Pizza",
+  name: "Home",
   computed: {
     ...mapState(['totalAmount','pizzas'])
-   
   },
   methods: {
     ...mapMutations(['aumentar','addPizza','incrementCountByPizzaType','deletePizza']),
@@ -54,7 +55,8 @@ export default {
   },
   props: {},
   components : {
-    Pizzaprice
+    Pizzaprice,
+    Bill
   },
   data() {
     return {
@@ -65,10 +67,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 section.pizzas {
   /*display:none; */
-  background-color: black;
+  // background-color: black;
   padding: 50px 0;
   .card-deck {
     justify-content: center;

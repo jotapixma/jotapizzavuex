@@ -7,30 +7,35 @@ export default new Vuex.Store({
   state: {
     pizzas: [
       {
+        id: 1,
         name: "Margarita",
         description: "divina",
         img: require('@/assets/pizzas/Margarita.jpg'),
         precio: 4000,
       },
       {
+        id: 2,
         name: "Napolitana",
         description: "adiktiva",
         img: require("@/assets/pizzas/Napolitana.jpg"),
         precio: 4400
       },
       {
+        id: 3,
         name: "Veggy",
         description: "Saludable",
         img: require("@/assets/pizzas/Veggy.jpg"),
         precio: 4800
       },
       {
+        id: 4,
         name: "Pepperoni",
         description: "viciadora",
         img: require("@/assets/pizzas/Pepperoni.jpg"),
         precio: 5600
       },
       {
+        id: 5,
         name: "Funghi",
         description: "jugosa con extra queso",
         img: require("@/assets/pizzas/Funghi.jpg"),
@@ -60,14 +65,14 @@ export default new Vuex.Store({
       state.totalAmount += pizza.precio
       // this.incrementCountByPizzaType()
     },
-    deletePizza(state,index){
-      console.log(index)
-      state.orderPizzas.splice(index,1)
+    deletePizza(state,payload){
+      console.log(payload)
+      state.orderPizzas.splice(payload.index,1)
 
-      // state.totalAmount -= pizza.precio
+      state.totalAmount -= payload.pizza.precio
     }
   },
   actions: {
- 
+    
   }
 })

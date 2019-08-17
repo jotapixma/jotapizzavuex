@@ -22,7 +22,7 @@
             </div>
             <div class="col-2">
               <i class="fas fa-trash"></i>
-              <button class="btn btn-danger" @click="deletePizza(index)">Quitar</button>
+              <button class="btn btn-danger" @click="deletePizza({index,pizza})">Quitar</button>
               {{index}}
             </div>
           </div>
@@ -41,7 +41,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { mapGetters } from "vuex"
+import { mapGetters } from "vuex";
 import { mapMutations } from "vuex";
 
 export default {
