@@ -3,12 +3,23 @@
     <button @click="goBack">Ir atras</button>
     <button @click="home">Home</button>
     <button @click="goNext">Ir Siguiente</button>
-    
-    <h4>Hola {{ this.$route.params.id }}</h4>
-    <h4>Pizza {{ this.$route.params.payload.pizza.name }}</h4>
-    <img :src="this.$route.params.payload.pizza.img" class="card-img-top" />
+        
+    <!-- <h4>Id Pizza {{ this.$route.params.pizza.id }}</h4> 
+    <h4>Pizza {{ this.$route.params.pizza.name }}</h4>
+    <img :src="this.$route.params.pizza.img" class="card-img-top" /> -->
 
+    <div class="card-content">
+      <div class="card-head">
+        <h5 class="card-title"> Pizza {{ this.$route.params.pizza.name  }}</h5>
+        <p class="card-text">{{ this.$route.params.pizza.description }}</p>
+      </div>
+      <div class="card-body">
+        <h4>Pizza nro: {{ $route.params.pizza.id }}</h4>
+        <img :src="this.$route.params.pizza.img" class="card-img-top" />
+      </div>
+    </div>
 
+    <!-- recibiendo del goToSingle -->
     <!-- <div class="card-content">
       <div class="card-head">
         <h5 class="card-title"> Pizza {{ $route.params.pizza.name }}</h5>
@@ -29,8 +40,7 @@ export default {
   name: "PizzaSingle",
   data() {
     return {
-      pizza: {}
-    };
+    }
   },
   methods: {
     home(){
@@ -42,9 +52,10 @@ export default {
     goNext(){
       this.$router.go(1)
     },
-  }
-  // mounted(){
-  //   const { id } = this.$route.params.id
+  },
+  // beforeCreate(){
+  //   const { id, name, img } = this.$route.params.payload
+  //   console.log('id',id)
   // },
 };
 </script>
@@ -52,11 +63,8 @@ export default {
 <style lang="scss" scoped>
 img{max-width: 500px;}
   .card-content { max-width: 800px; margin: 0 auto;
-    .card-head{ text-align: center;
-      .card-title{ 
-    }
-    .card-body{}
-    }
+    .card-head{ text-align: center;}
+    .card-body{ text-align: center; }
   }
 </style>
 
