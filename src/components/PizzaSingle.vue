@@ -3,12 +3,8 @@
     <button @click="goBack">Ir atras</button>
     <button @click="home">Home</button>
     <button @click="goNext">Ir Siguiente</button>
-        
-    <!-- <h4>Id Pizza {{ this.$route.params.pizza.id }}</h4> 
-    <h4>Pizza {{ this.$route.params.pizza.name }}</h4>
-    <img :src="this.$route.params.pizza.img" class="card-img-top" /> -->
 
-    <div class="card-content">
+    <!-- <div class="card-content">
       <div class="card-head">
         <h5 class="card-title"> Pizza {{ this.$route.params.pizza.name  }}</h5>
         <p class="card-text">{{ this.$route.params.pizza.description }}</p>
@@ -17,10 +13,10 @@
         <h4>Pizza nro: {{ $route.params.pizza.id }}</h4>
         <img :src="this.$route.params.pizza.img" class="card-img-top" />
       </div>
-    </div>
+    </div> -->
 
     <!-- recibiendo del goToSingle -->
-    <!-- <div class="card-content">
+    <div class="card-content">
       <div class="card-head">
         <h5 class="card-title"> Pizza {{ $route.params.pizza.name }}</h5>
         <p class="card-text">{{ $route.params.pizza.description }}</p>
@@ -29,7 +25,7 @@
         <h4>Pizza nro: {{ $route.params.pizza.id }}</h4>
         <img :src="$route.params.pizza.img" class="card-img-top" />
       </div>
-    </div> -->
+    </div>
     
   </div>
 </template>
