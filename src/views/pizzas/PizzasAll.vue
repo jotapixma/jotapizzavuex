@@ -51,17 +51,13 @@ export default {
     // PizzaSingle
   },
   methods: {
-    // solo envio id
-    // goToSinglePizza(pizzaId){
-    //   console.log(pizzaId)
-    //   this.$router.push({ name: 'pizzas::id', params: { id: pizzaId }})
-    // },
     goToRoute(pizza) {
       console.log(pizza);
-      this.$router.push({ name: "pizzas::id", params: { id: pizza.id, pizza: pizza } });
+      this.$router.push({ name: "pizzas::id", params: {id: pizza.id} });
     }
   }
-};
+}
+
 </script>
 
 <style lang="scss" scoped>

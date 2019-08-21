@@ -16,14 +16,14 @@
     </div> -->
 
     <!-- recibiendo del goToSingle -->
-    <div class="card-content">
+    <div class="card-content" v-if="pizza !== null">
       <div class="card-head">
-        <h5 class="card-title"> Pizza {{ $route.params.pizza.name }}</h5>
-        <p class="card-text">{{ $route.params.pizza.description }}</p>
+        <h5 class="card-title"> Pizza {{ pizza.name }}</h5>
+        <p class="card-text">{{ pizza.description }}</p>
       </div>
       <div class="card-body">
-        <h4>Pizza nro: {{ $route.params.pizza.id }}</h4>
-        <img :src="$route.params.pizza.img" class="card-img-top" />
+        <h4>Pizza nro: {{ pizza.id }}</h4>
+        <img :src="pizza.img" class="card-img-top" />
       </div>
     </div>
     
@@ -32,12 +32,24 @@
 
 <script>
 
+import { mapState} from 'vuex'
+
 export default {
+  
   name: "PizzaSingle",
   data() {
     return {
+      pizza: null
     }
   },
+  beforeMount(){
+    const { id  } = this.$route.params
+    this.pizza = this.pizzas.find(p => p.id === id )
+    // console.log(pizza)
+  },
+  computed: mapState({
+    pizzas: state => state.pizzas
+  }),
   methods: {
     home(){
       this.$router.push('/')
@@ -49,10 +61,7 @@ export default {
       this.$router.go(1)
     },
   },
-  // beforeCreate(){
-  //   const { id, name, img } = this.$route.params.payload
-  //   console.log('id',id)
-  // },
+  
 };
 </script>
 
@@ -64,4 +73,3 @@ img{max-width: 500px;}
   }
 </style>
 
-<style lang="scss" scoped>
