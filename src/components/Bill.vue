@@ -15,14 +15,14 @@
         <li v-for = "(pizza,index) in orderPizzas" :key="pizza.id">
           <div class="row">
             <div class="col-5">
-            {{index}} <h6>{{ pizza.name }}</h6>
+            {{index}} <h6>{{ pizza.name }} ({{ pizza.quantity }})</h6>
             </div>
             <div class="col-5">
-              <h6>{{ pizza.precio }} </h6>
+              <h6> {{ (pizza.price * pizza.quantity) }}</h6>
             </div>
             <div class="col-2">
               <i class="fas fa-trash"></i>
-              <button class="btn btn-danger" @click="deletePizza(index)">Quitar</button>
+              <button class="btn btn-danger" @click="deletePizza(pizza)">Quitar</button>
               {{index}}
             </div>
           </div>
@@ -46,13 +46,18 @@ import { mapMutations } from "vuex";
 
 export default {
   name: "Bill",
+  data() {
+    return {
+      // amountTypePizza: null
+    }
+  },
   computed: {
     ...mapState(["totalAmount","orderPizzas"]),
     ...mapGetters(["publicOrder"])
   },
   methods: {
     ...mapMutations(["deletePizza"])
-  }
+  },
 };
 </script>
 

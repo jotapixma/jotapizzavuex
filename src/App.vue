@@ -1,22 +1,29 @@
 <template>
   <div id="app" class="container-fluid">
-    <Pizza></Pizza>
-    <Bill/>
+    <SectionPizzaTypes/>
+    <div v-if="orderPizzas.length > 0">
+      <Bill/>
+    </div>
   </div>
 </template>
 
 <script>
-import Pizza from './components/Pizza.vue';
+import SectionPizzaTypes from './components/SectionPizzaTypes.vue';
 import Bill from './components/Bill.vue'
+
+import {mapState} from 'vuex';
 // import Pizzaprice from './components/Pizzaprice.vue';
 
 
 export default {
   name: 'app',
   components: {
-    Pizza,
+    SectionPizzaTypes,
     Bill
-  }
+  },
+  computed: {
+    ...mapState(['orderPizzas'])
+  },
 }
 </script>
 

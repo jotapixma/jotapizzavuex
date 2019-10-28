@@ -10,16 +10,16 @@
             <img :src="pizza.img" class="card-img-top">
             <div class="card-body">
               <div class="circle-price">
-                <div class="mini-circle">{{pizza.precio}}</div>
+                <div class="mini-circle">{{pizza.price}}</div>
               </div>
               <h5 class="card-title">{{ pizza.name }}</h5>
               <p class="card-text">{{ pizza.description }}</p>
               <div class="row">
                 <div class="col-4">
-                  <button class="btn btn-danger btn-small" @click="deletePizza(pizza)">-</button>
+                  <!-- <button class="btn btn-danger btn-small" @click="deletePizza(pizza)">-</button> -->
                 </div>
                 <div class="col-4">
-                  <input type="text" class="input-group">
+                  <input type="text" class="input-group"> {{ pizza.quantity }}
                 </div>
                 <div class="col-4">
                   <button class="btn btn-success btn-small" @click="addPizza(pizza)">+</button>
@@ -30,9 +30,6 @@
         </div>
       </div>
     </div>
-    <h2>Precio Total: {{ totalAmount }}</h2>
-    
-    <Pizzaprice :price="totalAmount" @nombreHijo="nombreFather = $event"></Pizzaprice>
   </section>
 </template>
 
@@ -41,20 +38,21 @@
 import {mapState} from 'vuex';
 import {mapMutations} from 'vuex';
 
-import Pizzaprice from './Pizzaprice.vue';
+// import Pizzaprice from './Pizzaprice.vue';
 export default {
-  name: "Pizza",
+  name: "SectionPizzaTypes",
   computed: {
-    ...mapState(['totalAmount','pizzas'])
+    ...mapState(['totalAmount','pizzas','tMargarita'])
    
   },
   methods: {
     ...mapMutations(['aumentar','addPizza','incrementCountByPizzaType','deletePizza']),
+
     // ...mapActions(['addPizza'])
   },
   props: {},
   components : {
-    Pizzaprice
+    // Pizzaprice
   },
   data() {
     return {
@@ -68,7 +66,7 @@ export default {
 <style lang="scss" scoped>
 section.pizzas {
   /*display:none; */
-  background-color: black;
+  // background-color: black;
   padding: 50px 0;
   .card-deck {
     justify-content: center;
