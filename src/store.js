@@ -39,11 +39,7 @@ export default new Vuex.Store({
         quantity: null,
       },
       {
-<<<<<<< HEAD
         id: 5,        
-=======
-        id: 5,
->>>>>>> e53c8924e452976cfa5cca3d802e8497c369b810
         name: "Funghi",
         description: "jugosa con extra queso",
         img: require("@/assets/pizzas/Funghi.jpg"),
