@@ -1,9 +1,12 @@
 <template>
   <div id="app" class="container-fluid">
-    <SectionPizzaTypes/>
-    <div v-if="orderPizzas.length > 0">
-      <Bill/>
+    
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/contact">Contact</router-link>
+      <router-link to="/pizzas">Pizzas</router-link>
     </div>
+    <router-view/>
   </div>
 </template>
 
