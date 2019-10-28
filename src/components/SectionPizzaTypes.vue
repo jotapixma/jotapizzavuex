@@ -1,7 +1,6 @@
 <template>
   <section class="pizzas" id="pizzas">
     <div class="container">
-      <h1>Hola</h1>
       <h2>{{nombreFather}}</h2>
       <div id="app-card">
         <h3 class="title">Nuestras Pizzas</h3>
@@ -10,16 +9,18 @@
             <img :src="pizza.img" class="card-img-top">
             <div class="card-body">
               <div class="circle-price">
-                <div class="mini-circle">{{pizza.price}}</div>
+                <div class="mini-circle">{{pizza.price}}$</div>
               </div>
               <h5 class="card-title">{{ pizza.name }}</h5>
               <p class="card-text">{{ pizza.description }}</p>
               <div class="row">
                 <div class="col-4">
-                  <!-- <button class="btn btn-danger btn-small" @click="deletePizza(pizza)">-</button> -->
+                  <button class="btn btn-danger btn-small" @click="deletePizza(pizza)">-</button>
                 </div>
                 <div class="col-4">
-                  <input type="text" class="input-group"> {{ pizza.quantity }}
+                  <div class="quantity-circle">
+                   {{ pizza.quantity }}
+                  </div>
                 </div>
                 <div class="col-4">
                   <button class="btn btn-success btn-small" @click="addPizza(pizza)">+</button>
@@ -42,8 +43,7 @@ import {mapMutations} from 'vuex';
 export default {
   name: "SectionPizzaTypes",
   computed: {
-    ...mapState(['totalAmount','pizzas','tMargarita'])
-   
+    ...mapState(['totalAmount','pizzas'])
   },
   methods: {
     ...mapMutations(['aumentar','addPizza','incrementCountByPizzaType','deletePizza']),
@@ -78,9 +78,9 @@ section.pizzas {
           margin-bottom: 0.25rem;
         }
         .circle-price {
-          height: 55px;
-          width: 55px;
-          border-radius: 55px;
+          height: 60px;
+          width: 60px;
+          border-radius: 60px;
           background-color: red;
           position: absolute;
           right: 1px;
@@ -97,9 +97,9 @@ section.pizzas {
             font-weight: 600;
           }
           .mini-circle {
-            height: 51px;
-            width: 51px;
-            border-radius: 51px;
+            height: 56px;
+            width: 56px;
+            border-radius: 56px;
             background-color: red;
             position: absolute;
             left: 2px;
@@ -110,6 +110,12 @@ section.pizzas {
             justify-content: center;
             align-items: center;
           }
+        }
+        .quantity-circle{
+          border: 1px solid black;
+          border-radius: 2.5rem;
+          padding: 5px;
+          text-align: center;
         }
       }
       flex: 0 0 17%;

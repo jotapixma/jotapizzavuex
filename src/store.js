@@ -47,6 +47,28 @@ export default new Vuex.Store({
         quantity: 0,
       }
     ],
+    players: [
+      {
+        name: "Jorge Teran Padre",
+        img: require("@/assets/pizzas/papa-tony-2.png"),
+        description: 'Encargado de horno'
+      },
+      {
+        name: "Cecilia Cova",
+        img: require("@/assets/pizzas/cecilia.png"),
+        description: 'Jefe de Logistica'
+      },
+      {
+        name: "Jorge Teran",
+        img: require("@/assets/pizzas/jota.png"),
+        description: 'Cheff Ejecutivo'
+      },
+      {
+        name: "Sulynn Teran",
+        img: require("@/assets/pizzas/sulynn.png"),
+        description: 'Community Manager'
+      }
+    ],
     orderPizzas: [],
     totalAmount: null,
   },
