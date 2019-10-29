@@ -5,6 +5,7 @@
     <Bill/>
   </div>
   <SectionIngredients/>
+  <SectionPizzaCustom/>
   <SectionTeam/>
   <BannerJotaPizzas/>
   <Footer/>
@@ -22,6 +23,7 @@ import SectionIngredients from './SectionIngredients.vue'
 import SectionTeam from './SectionTeam.vue'
 import Pizzaprice from './Pizzaprice.vue'
 import BannerJotaPizzas from './BannerJotaPizzas.vue'
+import SectionPizzaCustom from './SectionPizzaCustom.vue'
 import Footer from './Footer.vue'
 
 export default {
@@ -39,6 +41,7 @@ export default {
     SectionPizzaTypes,
     SectionIngredients,
     SectionTeam,
+    SectionPizzaCustom,
     Bill,
     BannerJotaPizzas,
     Footer

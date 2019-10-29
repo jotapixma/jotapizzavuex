@@ -69,6 +69,21 @@ export default new Vuex.Store({
         description: 'Community Manager'
       }
     ],
+    ingredients: [
+      { name: 'Tomate', img:  require('@/assets/pizzas/tomate-custom.png'), precio: '1000' },
+      { name: 'Cebolla', img:  require('@/assets/pizzas/cebolla_juliana.jpg'), precio: '1500' },
+      { name: 'Pimenton', img:  require('@/assets/pizzas/pimenton.jpg'), precio: '2000' },
+      { name: 'Choclo', img:  require('@/assets/pizzas/maiz.jpg'), precio: '2500' },
+      { name: 'Jalapeño', img:  require('@/assets/pizzas/jalapeño-3.jpg'), precio: '3000' },
+      { name: 'Jamon', img:  require('@/assets/pizzas/jamon-cocido.jpg'), precio: '3500' },
+      { name: 'Tocineta', img:  require('@/assets/pizzas/tocineta-2.jpg'), precio: '4000' },
+      { name: 'Jamon Serrano', img:  require('@/assets/pizzas/jamon-serrano.jpeg'), precio: '4500' },
+      { name: 'Pepperoni', img:  require('@/assets/pizzas/pepperoni-2.jpg'), precio: '5000' },
+      { name: 'Champiñon', img:  require('@/assets/pizzas/champiñon-1.jpg'), precio: '5500' },
+      { name: 'Aceituna', img:  require('@/assets/pizzas/aceituna-verde.png'), precio: '6000' },
+      { name: 'Salame', img:  require('@/assets/pizzas/salami.png'), precio: '6500' },
+
+    ],
     orderPizzas: [],
     totalAmount: null,
   },
