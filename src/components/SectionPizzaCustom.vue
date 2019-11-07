@@ -1,10 +1,26 @@
 <template>
   <section class="pizzas-custom">
-    <div class="d-flex flex-wrap items-container justify-content-center">
+    <div class="container">
+      <div class="col-12" v-if="!orderFinish">
+        <div class="cantpizzas-panel">
+          <h4>Cuantas pizzas desea?</h4>
+          <div class="img ">
+            <img class="img-fluid big" id="pizza" src="@/assets/pizzas/pizza-vector.png"/>
+          </div>
+          <div class="btn-panel">
+            <b-button pill variant="danger" :disabled="true">-</b-button>
+            {{pizzasOrder.length}}
+            <b-button pill variant="success" @click="addPizza">+</b-button>
+          </div>
+          <b-button pill variant="success" @click="goToBuildPizza">Siguiente</b-button>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap items-container justify-content-center" v-if="orderFinish">
       <div class="col-lg-2 col-4 order-3 order-lg-1 left-side">
         <div class="container-barra">
           <div class="progress progress-bar-vertical">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" :class="estadoBarra" role="progressbar" :style = "{height: barraDeliciosidad + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            <!-- <div class="progress-bar progress-bar-striped progress-bar-animated" :class="estadoBarra" role="progressbar" :style = "{height: barraDeliciosidad + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> -->
           </div>
         </div>
       </div>
@@ -12,14 +28,17 @@
       <div class="col-lg-10 col-12 order-1 order-lg-2 right-side">
         
         <div class="row ingredients-panel">
-          
-          <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.name">
+          <div class="col-12">
+            <h3>Pizza personalizada nro {{ idPizzaSelected }}</h3>
+            <b-button pill variant="primary" @click="goToBuildPizza" :disabled="idPizzaSelected>pizzasOrder.length">Ir a siguiente Pizza</b-button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.id">
             <div class="img">
               <img class="img-fluid" id="ingredient" :src="ingredient.img"/>
             </div>
             <div class="btn-section">
               {{ingredient.name}}
-              <button class="btn btn-primary">Añadir</button>
+              <button class="btn btn-primary" @click="addIngredient(ingredient)">Añadir</button>
               <!-- <button class="btn btn-primary" v-on:click="agregarIngrediente(ingredient)"> Añadir </button> -->
             </div>
           </div>
@@ -37,50 +56,49 @@ export default {
   name: 'SectionPizzaCustom',
   data() {
     return {
-      barraDeliciosidad: 30,
+      // pizzaPrice: 0,
+      idPizzaSelected: 0,
+      selectedPizza: {},
+      pizzasOrder: [],
+      generalBar: 30,
+      orderFinish: false
     }
   },
   computed: {
     ...mapState(['ingredients']),
     estadoBarra() {
-      const deliciosidad = this.barraDeliciosidad;
+      const statusBar = this.generalBar;
       return {
-        "bg-success": deliciosidad <= 33.33,
-        "bg-warning": deliciosidad > 33.33 && deliciosidad <= 66.66,
-        "bg-danger": deliciosidad > 66.66
+        "bg-success": statusBar <= 33.33,
+        "bg-warning": statusBar > 33.33 && statusBar <= 66.66,
+        "bg-danger": statusBar > 66.66
       }
     }
   },
   methods: {
-    incrementBarra: function (){
-      var increment = 33.33;
-      this.barraDeliciosidad += increment;  
-      var message;
-      
-      if (this.cantidad === 3){
-        
-        var resp = confirm("Has terminado de armar tu pizza, deseas agregar mas ingredientes?");
-        
-        if (resp == true) {
-          alert(message = "Puedes agregar dos(2) ingredientes más");
-          this.barraDeliciosidad = 33.33;
-        } 
-        else {
-         alert(message = "Gracias! has completado tu pizza"); 
-         this.barraDeliciosidad = 0;
-        //  this.selectedPizza.ingredientes = [];
-          this.cantidad = 0;
-        }
-        return message;
-        
+    goToBuildPizza() {
+      this.orderFinish = true
+      this.selectedPizza=this.pizzasOrder[++this.idPizzaSelected];
+      // this.selectedPizza.ingredients = [];
+    },
+    addPizza(){
+      this.pizzasOrder.push({
+        ingredients:[], 
+        basePrice: 3000
+      })
+      console.log('orden de pizza:', this.pizzasOrder)
+    },
+    addIngredient(ingredient){
+      const existIngredient = this.selectedPizza.ingredients.find(ingredient_ => ingredient_.id === ingredient.id )
+      if (existIngredient === undefined) {
+        this.selectedPizza.ingredients.push({
+          id: ingredient.id,
+          name: ingredient.name,
+          price: ingredient.price,
+        })
+      } else {
+        alert('Este ingrediente ya se encuentra en tu pizza!')
       }
-      if (this.cantidad == 5){
-        alert("Felicidades! Has terminado de armar tu pizza");
-        this.barraDeliciosidad = 0;
-        // this.selectedPizza.ingredientes = [];
-        this.cantidad = 0;
-      }
-
     }
   }
 }
@@ -88,7 +106,27 @@ export default {
 
 <style lang="stylus" scoped>
   section.pizzas-custom 
+    // background-color: black
     padding: 50px 0
+    .cantpizzas-panel
+      text-align: center
+      .img {
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            max-height: 110px;
+            margin: 0 auto;
+        }
+      }
+      .btn-panel
+        justify-content: space-around
+        display: flex
+        max-width: 150px
+        margin: 15px auto
+        button
+          min-width: 40px;
     .left-side 
       .container-barra 
         height: 100%

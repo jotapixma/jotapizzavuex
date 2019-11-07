@@ -1,14 +1,14 @@
 <template>
 <div>
-  <SectionPizzaTypes/>
+  <!-- <SectionPizzaTypes/> -->
   <div v-if="orderPizzas.length > 0">
     <Bill/>
   </div>
-  <SectionIngredients/>
+  <!-- <SectionIngredients/> -->
   <SectionPizzaCustom/>
-  <SectionTeam/>
-  <BannerJotaPizzas/>
-  <Footer/>
+  <!-- <SectionTeam/> -->
+  <!-- <BannerJotaPizzas/> -->
+  <!-- <Footer/> -->
 </div>
 </template>
 
