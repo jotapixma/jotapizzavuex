@@ -16,11 +16,11 @@
         </div>
       </div>
     </div>
-    <div class="d-flex flex-wrap items-container justify-content-center" v-if="orderFinish">
+    <div class="d-flex flex-wrap items-container justify-content-center" v-if="putIngredientsFinish">
       <div class="col-lg-2 col-4 order-3 order-lg-1 left-side">
         <div class="container-barra">
           <div class="progress progress-bar-vertical">
-            <!-- <div class="progress-bar progress-bar-striped progress-bar-animated" :class="estadoBarra" role="progressbar" :style = "{height: barraDeliciosidad + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> -->
+            <div class="progress-bar progress-bar-striped progress-bar-animated" :class="statusBar" role="progressbar" :style = "{height: capacityBarIngredients + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
         </div>
       </div>
@@ -29,8 +29,8 @@
         
         <div class="row ingredients-panel">
           <div class="col-12">
-            <h3>Pizza personalizada nro {{ idPizzaSelected }}</h3>
-            <b-button pill variant="primary" @click="goToBuildPizza" :disabled="idPizzaSelected>pizzasOrder.length">Ir a siguiente Pizza</b-button>
+            <h3>Pizza personalizada nro {{ idPizzaSelected+1 }}</h3>
+            <b-button pill variant="primary" @click="goToBuildPizza" :disabled="enabledNextPizza">Ir a siguiente Pizza</b-button>
           </div>
           <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.id">
             <div class="img">
@@ -56,30 +56,36 @@ export default {
   name: 'SectionPizzaCustom',
   data() {
     return {
-      // pizzaPrice: 0,
-      idPizzaSelected: 0,
+      capacityBarIngredients: 0,
+      idPizzaSelected: -1,
       selectedPizza: {},
       pizzasOrder: [],
-      generalBar: 30,
-      orderFinish: false
-    }
-  },
-  computed: {
-    ...mapState(['ingredients']),
-    estadoBarra() {
-      const statusBar = this.generalBar;
-      return {
-        "bg-success": statusBar <= 33.33,
-        "bg-warning": statusBar > 33.33 && statusBar <= 66.66,
-        "bg-danger": statusBar > 66.66
-      }
+      orderFinish: false,
+      putIngredientsFinish: false,
+      handleCantIngredients: 0
     }
   },
   methods: {
+    // checkoutOrderStatus() {
+    //   console.log('orderpizzalenght:', this.pizzasOrder.length)
+    //   if (this.idPizzaSelected) {
+    //     if (this.idPizzaSelected = this.pizzasOrder.length){
+    //       alert('felicidades, has terminado tu pedido!')
+    //       // this.goToBuildPizza()
+    //     }
+    //   }
+    // },
     goToBuildPizza() {
       this.orderFinish = true
-      this.selectedPizza=this.pizzasOrder[++this.idPizzaSelected];
-      // this.selectedPizza.ingredients = [];
+      this.putIngredientsFinish = true
+      this.selectedPizza=this.pizzasOrder[++this.idPizzaSelected]
+      console.log('pizzaSelected:', this.idPizzaSelected)
+      console.log('order Length:', this.pizzasOrder.length)
+      if (this.idPizzaSelected === this.pizzasOrder.length) {
+        alert('felicidades, has terminado tu pedido!')
+        this.putIngredientsFinish = false
+      }
+      // this.selectedPizza.ingredients = []
     },
     addPizza(){
       this.pizzasOrder.push({
@@ -96,8 +102,55 @@ export default {
           name: ingredient.name,
           price: ingredient.price,
         })
+        this.handleCantIngredients = this.selectedPizza.ingredients.length
+        this.incrementBar()
       } else {
         alert('Este ingrediente ya se encuentra en tu pizza!')
+      }
+      console.log('cant Ingredientes:', this.handleCantIngredients)
+    },
+    incrementBar(){
+      let increment = 33.33
+      this.capacityBarIngredients += increment
+      let message
+      
+      if (this.handleCantIngredients === 3){
+        
+        let resp = confirm("Has terminado de armar tu pizza, deseas agregar mas ingredientes?")
+        
+        if (resp == true) {
+          alert(message = "Puedes agregar dos(2) ingredientes más")
+          this.capacityBarIngredients = 33.33
+        } 
+        else {
+         alert(message = "Gracias! has completado tu pizza"); 
+          this.capacityBarIngredients = 0
+          this.handleCantIngredients = 0
+          this.goToBuildPizza()
+        }
+        return message;
+      }
+      if (this.handleCantIngredients == 5){
+        alert("Felicidades! Has terminado de armar tu pizza")
+        this.capacityBarIngredients = 0
+        this.handleCantIngredients = 0
+        this.goToBuildPizza()
+      }
+
+    },
+  },
+  computed: {
+    ...mapState(['ingredients']),
+    enabledNextPizza() {
+      return this.selectedPizza.ingredients.length < 1
+      // this.idPizzaSelected > this.pizzasOrder.length
+    },
+    statusBar() {
+      const statusBar = this.capacityBarIngredients;
+      return {
+        "bg-success": statusBar <= 33.33,
+        "bg-warning": statusBar > 33.33 && statusBar <= 66.66,
+        "bg-danger": statusBar > 66.66
       }
     }
   }
