@@ -57,6 +57,6 @@ export default {
   methods: {
     ...mapMutations(["deletePizza"])
   },
-};
+}
 </script>
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+<h1> holaaa </h1>
+</body>
+
+<script type="text/javascript">
+  function isMultiple(value, multiple) {
+    rest = value % multiple;
+    if (rest === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  function calculateAcumMultiple() {
+    let totalMultiples = 0
+    const num = prompt('Introduce el numero hasta cual quiere consultar múltiplos')
+    for (let i=1; i<num; i++) {
+      if (isMultiple(i,3) || isMultiple(i,5)) {
+        totalMultiples += i
+      }
+    }
+    alert(`La suma de los múltiplos de 3 o 5 de los números naturales menores a ${num} es de ${totalMultiples}`)
+    return totalMultiples
+  }
+  calculateAcumMultiple()
+</script>
+</html>

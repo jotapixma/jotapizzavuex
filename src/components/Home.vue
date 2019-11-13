@@ -4,7 +4,7 @@
   <div v-if="orderPizzas.length > 0">
     <Bill/>
   </div>
-  <!-- <SectionIngredients/> -->
+  <SectionIngredients/>
   <SectionPizzaCustom/>
   <!-- <SectionTeam/> -->
   <!-- <BannerJotaPizzas/> -->
@@ -43,6 +43,7 @@ export default {
     SectionTeam,
     SectionPizzaCustom,
     Bill,
+    // BillPizzaCustom,
     BannerJotaPizzas,
     Footer
   },

@@ -45,15 +45,22 @@
         </div>
       </div>
     </div>
+    <BillPizzaCustom :pizzasOrder="pizzasOrder"/>
   </section>
+
 
 </template>
 
 <script>
 import {mapState} from 'vuex'
 
+import BillPizzaCustom from './BillPizzaCustom.vue'
+
 export default {
   name: 'SectionPizzaCustom',
+  components: {
+    BillPizzaCustom
+  },
   data() {
     return {
       capacityBarIngredients: 0,
