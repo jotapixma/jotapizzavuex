@@ -45,7 +45,8 @@
         </div>
       </div>
     </div>
-    <BillPizzaCustom :pizzasOrder="pizzasOrder"/>
+    <button v-if="showBillButton" @click="openBill">Ver cuenta</button>
+    <BillPizzaCustom v-if="showBill" :pizzasOrder="pizzasOrder"/>
   </section>
 
 
@@ -69,6 +70,8 @@ export default {
       pizzasOrder: [],
       orderFinish: false,
       putIngredientsFinish: false,
+      showBill: false,
+      showBillButton: false,
       handleCantIngredients: 0
     }
   },
@@ -82,6 +85,9 @@ export default {
     //     }
     //   }
     // },
+    openBill() {
+      this.showBill = true
+    },
     goToBuildPizza() {
       this.orderFinish = true
       this.putIngredientsFinish = true
@@ -91,6 +97,8 @@ export default {
       if (this.idPizzaSelected === this.pizzasOrder.length) {
         alert('felicidades, has terminado tu pedido!')
         this.putIngredientsFinish = false
+        this.showBillButton = true
+        // this.showBill = true
       }
       // this.selectedPizza.ingredients = []
     },

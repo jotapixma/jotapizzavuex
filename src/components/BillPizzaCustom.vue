@@ -16,17 +16,18 @@
         <div class="col-lg-6 right-side">
           <h5>Precio</h5>
             <div v-for="(pizza,index) in pizzasOrder">
-              <span>---------------</span>
-              <li v-for="ingredient in pizza.ingredients">
-                <span>{{ ingredient.price }} </span>
-              </li>
+              <ul> {{ pizza.basePrice }} (precio base)
+                <li v-for="ingredient in pizza.ingredients">
+                  <span>{{ ingredient.price }} </span>
+                </li>
+              </ul>
             </div>
         </div>
       </div>
     </div>
 
-    <h6>El subtotal de su pedido es de:  </h6>
-    <h6>El total de su pedido es de XYZ</h6>
+    <h6>El monto total de su pedido es de: {{ totalPizzasOrder }} </h6>
+    <!-- <h6>El total de su pedido es de XYZ</h6> -->
   </div>
 </template>
 
@@ -43,7 +44,16 @@
     console.log('orden de pizzas from BillCustom:', this.pizzasOrder)
   },
   computed: {
-   
+    totalPizzasOrder() {
+      let subPizzasOrder = 0
+      this.pizzasOrder.forEach(pizza => {
+        subPizzasOrder += pizza.basePrice
+        pizza.ingredients.forEach(ingredient => {
+          subPizzasOrder += parseInt(ingredient.price)
+        })
+      })
+      return subPizzasOrder
+    }
   }
 }
 </script>
