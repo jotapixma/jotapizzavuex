@@ -15,38 +15,41 @@
           <b-button pill variant="success" @click="goToBuildPizza">Siguiente</b-button>
         </div>
       </div>
-    </div>
-    <div class="d-flex flex-wrap items-container justify-content-center" v-if="putIngredientsFinish">
-      <div class="col-lg-2 col-4 order-3 order-lg-1 left-side">
-        <div class="container-barra">
-          <div class="progress progress-bar-vertical">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" :class="statusBar" role="progressbar" :style = "{height: capacityBarIngredients + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="d-flex flex-wrap items-container justify-content-center" v-if="putIngredientsFinish">
+        <div class="col-lg-2 col-4 order-3 order-lg-1 left-side">
+          <div class="container-barra">
+            <div class="progress progress-bar-vertical">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" :class="statusBar" role="progressbar" :style = "{height: capacityBarIngredients + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Panel de Ingredientes -->
+        <div class="col-lg-10 col-12 order-1 order-lg-2 right-side">
+          
+          <div class="row ingredients-panel">
+            <div class="col-12">
+              <h3>Pizza personalizada nro {{ idPizzaSelected+1 }}</h3>
+              <b-button pill variant="primary" @click="goToBuildPizza" :disabled="enabledNextPizza">Ir a siguiente Pizza</b-button>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.id">
+              <div class="img">
+                <img class="img-fluid" id="ingredient" :src="ingredient.img"/>
+              </div>
+              <div class="btn-section">
+                {{ingredient.name}}
+                <button class="btn btn-primary" @click="addIngredient(ingredient)">Añadir</button>
+                <!-- <button class="btn btn-primary" v-on:click="agregarIngrediente(ingredient)"> Añadir </button> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Panel de Ingredientes -->
-      <div class="col-lg-10 col-12 order-1 order-lg-2 right-side">
+      <div class="text-center">
         
-        <div class="row ingredients-panel">
-          <div class="col-12">
-            <h3>Pizza personalizada nro {{ idPizzaSelected+1 }}</h3>
-            <b-button pill variant="primary" @click="goToBuildPizza" :disabled="enabledNextPizza">Ir a siguiente Pizza</b-button>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.id">
-            <div class="img">
-              <img class="img-fluid" id="ingredient" :src="ingredient.img"/>
-            </div>
-            <div class="btn-section">
-              {{ingredient.name}}
-              <button class="btn btn-primary" @click="addIngredient(ingredient)">Añadir</button>
-              <!-- <button class="btn btn-primary" v-on:click="agregarIngrediente(ingredient)"> Añadir </button> -->
-            </div>
-          </div>
-        </div>
+        <b-button v-if="showBillButton" @click="openBill" variant="primary">Ver detalle de pedido</b-button>
       </div>
+      <BillPizzaCustom :pizzasOrder="pizzasOrder"/>
     </div>
-    <button v-if="showBillButton" @click="openBill">Ver cuenta</button>
-    <BillPizzaCustom v-if="showBill" :pizzasOrder="pizzasOrder"/>
   </section>
 
 
@@ -87,13 +90,14 @@ export default {
     // },
     openBill() {
       this.showBill = true
+      this.showBillButton = false
     },
     goToBuildPizza() {
       this.orderFinish = true
       this.putIngredientsFinish = true
       this.selectedPizza=this.pizzasOrder[++this.idPizzaSelected]
-      console.log('pizzaSelected:', this.idPizzaSelected)
-      console.log('order Length:', this.pizzasOrder.length)
+      // console.log('pizzaSelected:', this.idPizzaSelected)
+      // console.log('order Length:', this.pizzasOrder.length)
       if (this.idPizzaSelected === this.pizzasOrder.length) {
         alert('felicidades, has terminado tu pedido!')
         this.putIngredientsFinish = false
