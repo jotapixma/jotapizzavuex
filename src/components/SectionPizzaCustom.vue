@@ -29,7 +29,7 @@
           <div class="row ingredients-panel">
             <div class="col-12">
               <h3>Pizza personalizada nro {{ idPizzaSelected+1 }}</h3>
-              <b-button pill variant="primary" @click="goToBuildPizza" :disabled="enabledNextPizza">Ir a siguiente Pizza</b-button>
+              <b-button pill variant="primary" @click="goToBuildPizza" >Ir a siguiente Pizza</b-button>
             </div>
             <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.id">
               <div class="img">
@@ -48,7 +48,7 @@
         
         <b-button v-if="showBillButton" @click="openBill" variant="primary">Ver detalle de pedido</b-button>
       </div>
-      <BillPizzaCustom :pizzasOrder="pizzasOrder"/>
+      <BillPizzaCustom @update-bill-order="statusBillOrder" v-if="showBill" :pizzasOrder="pizzasOrder"/>
     </div>
   </section>
 
@@ -79,18 +79,14 @@ export default {
     }
   },
   methods: {
-    // checkoutOrderStatus() {
-    //   console.log('orderpizzalenght:', this.pizzasOrder.length)
-    //   if (this.idPizzaSelected) {
-    //     if (this.idPizzaSelected = this.pizzasOrder.length){
-    //       alert('felicidades, has terminado tu pedido!')
-    //       // this.goToBuildPizza()
-    //     }
-    //   }
-    // },
     openBill() {
       this.showBill = true
       this.showBillButton = false
+    },
+    statusBillOrder() {
+      this.showBill = false
+      this.orderFinish = false
+      this.idPizzaSelected = -1
     },
     goToBuildPizza() {
       this.orderFinish = true
@@ -98,11 +94,14 @@ export default {
       this.selectedPizza=this.pizzasOrder[++this.idPizzaSelected]
       // console.log('pizzaSelected:', this.idPizzaSelected)
       // console.log('order Length:', this.pizzasOrder.length)
-      if (this.idPizzaSelected === this.pizzasOrder.length) {
-        alert('felicidades, has terminado tu pedido!')
-        this.putIngredientsFinish = false
-        this.showBillButton = true
-        // this.showBill = true
+      if (this.pizzasOrder.length > 0) {
+        if (this.idPizzaSelected === this.pizzasOrder.length) {
+          console.log('hola')
+          alert('felicidades, has terminado tu pedido!')
+          this.putIngredientsFinish = false
+          this.showBillButton = true
+          // this.showBill = true
+        }
       }
       // this.selectedPizza.ingredients = []
     },
@@ -160,10 +159,10 @@ export default {
   },
   computed: {
     ...mapState(['ingredients']),
-    enabledNextPizza() {
-      return this.selectedPizza.ingredients.length < 1
-      // this.idPizzaSelected > this.pizzasOrder.length
-    },
+    // enabledNextPizza() {
+    //   return this.selectedPizza.ingredients.length < 1
+    //   // this.idPizzaSelected > this.pizzasOrder.length
+    // },
     statusBar() {
       const statusBar = this.capacityBarIngredients;
       return {
@@ -173,6 +172,7 @@ export default {
       }
     }
   }
+
 }
 </script>
 

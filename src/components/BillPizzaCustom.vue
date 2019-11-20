@@ -66,6 +66,10 @@
     },
     deleteOrder(index){
       this.pizzasOrder.splice(index,1)
+      if (this.pizzasOrder.length <= 0) {
+        console.log('holix')
+        this.$emit('update-bill-order')
+      }
     }
   },
   computed: {
