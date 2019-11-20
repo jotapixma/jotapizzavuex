@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import BootstrapVue from 'bootstrap-vue'
 import feather from 'vue-icon'
+import Slick from 'vue-slick'	
+ 	
 Vue.use(BootstrapVue)
 Vue.use(feather, 'v-icon')
 

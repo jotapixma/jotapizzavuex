@@ -1,4 +1,4 @@
-<template>
+<template>  
   <section class="animation-jotapizzas">
     <div class="img">
       <img class="img-fluid" src="@/assets/pizzas/logo-slider.png"/>

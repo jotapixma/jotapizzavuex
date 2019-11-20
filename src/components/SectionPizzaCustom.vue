@@ -3,7 +3,8 @@
     <div class="container">
       <div class="col-12" v-if="!orderFinish">
         <div class="cantpizzas-panel">
-          <h4>Cuantas pizzas desea?</h4>
+          <h2>Arma la pizza a tu medida!</h2>
+          <h4>Cuantas pizzas deseas?</h4>
           <div class="img ">
             <img class="img-fluid big" id="pizza" src="@/assets/pizzas/pizza-vector.png"/>
           </div>
