@@ -1,6 +1,6 @@
 <template>
 <div>
-  <!-- <HomeSlider/>  -->
+  <HomeSlider/> 
   <SectionPizzaTypes/>
   <div v-if="orderPizzas.length > 0">
     <Bill/>
