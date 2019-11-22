@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slider height="400px" autoplay="false" stopOnHover="true">
+    <slider height="400px">
       <slider-item>
         <div class="img">
           <img class="img-fluid" src='@/assets/pizzas/Pepperoni.jpg'>
