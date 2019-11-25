@@ -2,7 +2,7 @@
   <section class="ingredientes bg-black" id="ingredientes">
     <div class="container">
 
-      <h3 class="title">Ingredientes</h3>
+      <h3 class="bg-black-title">Ingredientes</h3>
 
       <div class="row">
         
@@ -72,6 +72,10 @@ export default {
 .ingredientes
   padding: 50px 0
   background-color: black
+  .bg-black-title
+    text-align: center;
+    padding-bottom: 30px;
+    color: white;
   .ingredient-item
     width: 33%
     overflow-x: hidden

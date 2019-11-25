@@ -3,7 +3,7 @@
     <div class="container">
       <h2>{{nombreFather}}</h2>
       <div id="app-card">
-        <h3 class="title">Nuestras Pizzas</h3>
+        <h3 class="bg-black-title">Nuestras Pizzas</h3>
         <div class="card-deck">
           <div class="card" v-for="pizza in pizzas" v-bind:key="pizza.id">
             <img :src="pizza.img" class="card-img-top">
@@ -66,6 +66,11 @@ export default {
 <style lang="scss" scoped>
 section.pizzas {
   /*display:none; */
+  .bg-black-title {
+    text-align: center;
+    padding-bottom: 30px;
+    color: white;
+  }
   background-color: black;
   padding: 50px 0;
   .card-deck {

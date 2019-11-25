@@ -1,7 +1,7 @@
 <template>
   <section class="team" id="team">
     <div class="container">
-      <h3 class="title">Equipo</h3>
+      <h3 class="bg-white-title">Equipo</h3>
       <div class="row">
 
         <div class="col" v-for="player in players" :key="player.name">
@@ -35,20 +35,26 @@ export default {
 </script>
 
 <style lang="stylus">
-  .team-card
-    text-align: center
-    .card-body
-      .img
-        width: 130px 
-        margin: 0 auto
-        img 
-          border-radius: 130px
-      .text-card
-        .name
-          margin-bottom: 0 
-          padding-top: 15px 
-        p
-          margin-bottom: 0 
-          padding-top:5px
+  section.team
+    padding: 50px 0
+    .bg-white-title
+      text-align: center
+      padding-bottom: 30px
+      color: black
+    .team-card
+      text-align: center
+      .card-body
+        .img
+          width: 130px 
+          margin: 0 auto
+          img 
+            border-radius: 130px
+        .text-card
+          .name
+            margin-bottom: 0 
+            padding-top: 15px 
+          p
+            margin-bottom: 0 
+            padding-top:5px
 
 </style>

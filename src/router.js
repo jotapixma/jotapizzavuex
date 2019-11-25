@@ -14,9 +14,14 @@ export default new Router({
       component: () => import('./components/Home.vue')
     },
     {
-      path: '/contact',
-      name: 'contact',
-      component: () => import('@/views/contact/Contact.vue')
+      path: '/ourpizzas',
+      name: 'ourpizzas',
+      component: () => import('./components/SectionPizzaTypes.vue')
+    },
+    {
+      path: '/custompizzas',
+      name: 'custompizzas',
+      component: () => import('./components/SectionPizzaCustom.vue')
     },
     {
       path: '/pizzas',
@@ -28,6 +33,21 @@ export default new Router({
       name: 'pizzas::id',
       component: () => import('@/components/PizzaSingle.vue'),
       props: true
+    },
+    {
+      path: '/ingredients',
+      name: 'ingredients',
+      component: () => import('./components/SectionIngredients.vue')
+    },
+    {
+      path: '/history',
+      name: 'history',
+      component: () => import('./components/SectionHistory.vue')
+    },
+    {
+      path: '/team',
+      name: 'team',
+      component: () => import('./components/SectionTeam.vue')
     },
   ]
 })

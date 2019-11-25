@@ -61,6 +61,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .pizzas {
+    background-color: black
+  }
   .card-deck { margin: 0 20px;
     justify-content: center;
     .card {
