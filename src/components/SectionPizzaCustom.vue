@@ -30,7 +30,7 @@
           <div class="row ingredients-panel">
             <div class="col-12">
               <h3>Pizza personalizada nro {{ idPizzaSelected+1 }}</h3>
-              <b-button pill variant="primary" @click="goToBuildPizza" >Ir a siguiente Pizza</b-button>
+              <!-- <b-button pill variant="primary" @click="goToBuildPizza" >Ir a siguiente Pizza</b-button> -->
             </div>
             <div class="col-6 col-md-4 col-lg-2 ingredient" v-for="ingredient in ingredients" :key="ingredient.id">
               <div class="img">

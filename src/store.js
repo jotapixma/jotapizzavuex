@@ -9,7 +9,7 @@ export default new Vuex.Store({
       {
         id: 1,
         name: "Margarita",
-        description: "divina",
+        description: "Un clásico de ayer y hoy",
         img: require('@/assets/pizzas/Margarita.jpg'),
         price: 4000,
         quantity: null,
@@ -17,7 +17,7 @@ export default new Vuex.Store({
       {
         id: 2,
         name: "Napolitana",
-        description: "adiktiva",
+        description: "El gran clásico italiano",
         img: require("@/assets/pizzas/Napolitana.jpg"),
         price: 4400,
         quantity: null,
@@ -25,7 +25,7 @@ export default new Vuex.Store({
       {
         id: 3,
         name: "Veggy",
-        description: "Saludable",
+        description: "Para paladares exigentes",
         img: require("@/assets/pizzas/Veggy.jpg"),
         price: 4800,
         quantity: null,
@@ -33,7 +33,7 @@ export default new Vuex.Store({
       {
         id: 4,
         name: "Pepperoni",
-        description: "viciadora",
+        description: "Irresistible de Jotapizzas",
         img: require("@/assets/pizzas/Pepperoni.jpg"),
         price: 5600,
         quantity: null,
@@ -41,10 +41,10 @@ export default new Vuex.Store({
       {
         id: 5,        
         name: "Funghi",
-        description: "jugosa con extra queso",
+        description: "La favorita de la casa!",
         img: require("@/assets/pizzas/Funghi.jpg"),
         price: 5900,
-        quantity: 0,
+        quantity: null,
       }
     ],
     players: [

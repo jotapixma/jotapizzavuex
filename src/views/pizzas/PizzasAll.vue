@@ -4,7 +4,7 @@
     <section class="pizzas" id="pizzas">
       <div class="container">
         <div id="app-card">
-          <h3 class="title">Nuestras Pizzas</h3>
+          <h3 class="bg-white-title">Galeria de nuestras pizzas</h3>
           <div class="card-deck">
             <div class="card" v-for="pizza in $store.state.pizzas" v-bind:key="pizza.id" >
               <img :src="pizza.img" class="card-img-top" @click="goToRoute(pizza)">
@@ -62,7 +62,13 @@ export default {
 
 <style lang="scss" scoped>
   .pizzas {
-    background-color: black
+    padding: 50px 0;
+    background-color: black;
+    .bg-white-title {
+      text-align: center;
+      padding-bottom: 30px;
+      color: white;
+    }
   }
   .card-deck { margin: 0 20px;
     justify-content: center;
@@ -77,6 +83,7 @@ export default {
       .card-body {
         position: relative; 
         padding: 0.5rem;
+        background-color: lavenderblush;
         .card-title { margin-bottom: 0.25rem; color: black; }
         .card-text{ color: black; }
       }
