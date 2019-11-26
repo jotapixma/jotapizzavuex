@@ -179,20 +179,26 @@ export default {
 
 <style lang="stylus" scoped>
   section.pizzas-custom 
-    // background-color: black
+    background-color: white
     padding: 50px 0
     .cantpizzas-panel
       text-align: center
-      .img {
-        min-height: 100px;
-        display: flex;
+      .img
+        min-height: 100px
+        display: flex
         align-items: center;
-        justify-content: center;
-        img {
-            max-height: 110px;
-            margin: 0 auto;
-        }
-      }
+        justify-content: center
+        img
+          max-height: 110px
+          margin: 15px auto
+        #pizza
+          animation: circlerotate 8s infinite
+          @keyframes circlerotate
+            from 
+              transform: rotate(0deg)
+            to 
+              transform: rotate(360deg)
+
       .btn-panel
         justify-content: space-around
         display: flex
@@ -242,9 +248,8 @@ export default {
           .img
             height: 115px;
             text-align: center;
-            img {
+            img
               max-height: 90px;
-            }
             #ingredient 
               animation: floatitem 4s infinite;
             @keyframes floatitem

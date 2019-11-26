@@ -8,8 +8,8 @@
           <div class="card" v-for="pizza in pizzas" v-bind:key="pizza.id">
             <img :src="pizza.img" class="card-img-top">
             <div class="card-body">
-              <div class="circle-price">
-                <div class="mini-circle">{{pizza.price}}$</div>
+              <div class="circle-price" >
+                <div class="mini-circle" id="mini-circle-rotate">{{pizza.price}}$</div>
               </div>
               <h5 class="card-title">{{ pizza.name }}</h5>
               <p class="card-text">{{ pizza.description }}</p>
@@ -65,6 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 section.pizzas {
+
   /*display:none; */
   .bg-black-title {
     text-align: center;
@@ -115,12 +116,29 @@ section.pizzas {
             justify-content: center;
             align-items: center;
           }
+          #mini-circle-rotate{
+            &:hover{
+              cursor: pointer;
+              animation: circlerotate 2s infinite;
+              @keyframes circlerotate {
+                from { 
+                    transform: rotate(0deg); 
+                  } to { 
+                    transform: rotate(360deg); 
+                  }
+              }
+            }
+          }
+          
         }
         .quantity-circle{
           border: 1px solid black;
           border-radius: 2.5rem;
           padding: 5px;
           text-align: center;
+          height: 35px;
+          width: 35px;
+          background-color: antiquewhite;
         }
       }
       flex: 0 0 17%;
