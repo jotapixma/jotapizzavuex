@@ -9,6 +9,7 @@
         </div>
         <div class="col-6">
           <h3>Precio</h3>
+          <h1>test</h1>
         </div>
       </div>
       <ul>
