@@ -60,18 +60,15 @@
   methods: {
     deleteIngredient(pizza,ingredient) {
       const indexIngredient = pizza.ingredients.findIndex(ingredient_ => ingredient_.id === ingredient.id)
-      // console.log('indexIng',indexIngredient)
       if (pizza.ingredients.length > 2) {
         pizza.ingredients.splice(indexIngredient,1)
       } else {
         alert('Tu pizza no puede contener menos de dos(2) ingredientes')
       }
-      console.log(pizza.ingredients.length)
     },
     deleteOrder(index){
       this.pizzasOrder.splice(index,1)
       if (this.pizzasOrder.length <= 0) {
-        console.log('holix')
         this.$emit('update-bill-order')
       }
     }

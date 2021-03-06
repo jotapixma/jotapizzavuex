@@ -87,17 +87,10 @@ export default new Vuex.Store({
     orderPizzas: [],
     totalAmount: null,
   },
-  // getters: {
-  //   publicOrder(state){
-  //     return state.orderPizzas
-  //   }
-  // },
+
   mutations: {
-    // aumentar(state){
-    //   state.totalAmount++
-    // },
+   
     addPizza(state,pizza){
-      console.log('pizza', pizza)
       pizza.quantity++
       const existPizza = state.orderPizzas.find( orderPizza => orderPizza.name === pizza.name)
 
@@ -105,10 +98,8 @@ export default new Vuex.Store({
         state.orderPizzas.push(pizza)
       }   
       state.totalAmount += pizza.price
-      console.log('stateOrder:', state.orderPizzas)
     },
     deletePizza(state,pizza){
-      console.log('stateOrder:', state.orderPizzas)
       state.orderPizzas.forEach(orderPizza => {
         if (orderPizza.name === pizza.name) {
           orderPizza.quantity -= 1

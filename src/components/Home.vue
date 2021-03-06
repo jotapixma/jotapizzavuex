@@ -62,8 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 section.pizzas {
-  /*display:none; */
-  // background-color: black;
+
   padding: 50px 0;
   .card-deck {
     justify-content: center;

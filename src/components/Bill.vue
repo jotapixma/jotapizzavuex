@@ -21,33 +21,7 @@
         </tr>
       
       </table>
-      <!-- <div class="row">
-        <div class="col-5">
-          <h5>Pedido</h5>
-        </div>
-        <div class="col-5">
-          <h5>Precio</h5>
-        </div>
-        <div class="col-2">
-          <h5>Editar pedido</h5>
-        </div>
-      </div>
-      <ul>
-        <li v-for = "(pizza) in orderPizzas" :key="pizza.id">
-          <div class="row">
-            <div class="col-5">
-            <h6>{{ pizza.name }} ({{ pizza.quantity }})</h6>
-            </div>
-            <div class="col-5">
-              <h6> {{ (pizza.price * pizza.quantity) }}</h6>
-            </div>
-            <div class="col-2">
-              <i class="fas fa-trash"></i>
-              <button class="btn btn-danger" @click="deletePizza(pizza)">Quitar</button>
-            </div>
-          </div>
-        </li>
-      </ul> -->
+
         
       <h4 class="text-right mt-3">
         El monto total de su pedido es:
