@@ -1,6 +1,6 @@
 <template>
   <section class="pizzas-custom">
-    <div class="container">
+    <div class="container-fluid">
       <div class="col-12" v-if="!orderFinish">
         <div class="cantpizzas-panel">
           <h2>Arma la pizza a tu medida!</h2>
@@ -93,25 +93,20 @@ export default {
       this.orderFinish = true
       this.putIngredientsFinish = true
       this.selectedPizza=this.pizzasOrder[++this.idPizzaSelected]
-      // console.log('pizzaSelected:', this.idPizzaSelected)
-      // console.log('order Length:', this.pizzasOrder.length)
+
       if (this.pizzasOrder.length > 0) {
         if (this.idPizzaSelected === this.pizzasOrder.length) {
-          console.log('hola')
           alert('felicidades, has terminado tu pedido!')
           this.putIngredientsFinish = false
           this.showBillButton = true
-          // this.showBill = true
         }
       }
-      // this.selectedPizza.ingredients = []
     },
     addPizza(){
       this.pizzasOrder.push({
         ingredients:[], 
         basePrice: 3000
       })
-      console.log('orden de pizza:', this.pizzasOrder)
     },
     addIngredient(ingredient){
       const existIngredient = this.selectedPizza.ingredients.find(ingredient_ => ingredient_.id === ingredient.id )
@@ -160,10 +155,7 @@ export default {
   },
   computed: {
     ...mapState(['ingredients']),
-    // enabledNextPizza() {
-    //   return this.selectedPizza.ingredients.length < 1
-    //   // this.idPizzaSelected > this.pizzasOrder.length
-    // },
+
     statusBar() {
       const statusBar = this.capacityBarIngredients;
       return {

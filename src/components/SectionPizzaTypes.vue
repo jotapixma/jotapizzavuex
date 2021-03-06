@@ -19,7 +19,12 @@
                 </div>
                 <div class="col-4">
                   <div class="quantity-circle">
-                   {{ pizza.quantity }}
+                    <template v-if="pizza.quantity > 0">
+                      {{ pizza.quantity }}
+                    </template>
+                    <template v-else>
+                      0
+                    </template>
                   </div>
                 </div>
                 <div class="col-4">
@@ -66,7 +71,6 @@ export default {
 <style lang="scss" scoped>
 section.pizzas {
 
-  /*display:none; */
   .bg-black-title {
     text-align: center;
     padding-bottom: 30px;
@@ -79,9 +83,13 @@ section.pizzas {
     .card {
       .card-body {
         position: relative;
-        padding: 0.5rem;
+        padding: 1rem 0.5rem;
         .card-title {
           margin-bottom: 0.25rem;
+        }
+        .card-text{
+          height: 48px;
+          overflow: hidden;
         }
         .circle-price {
           height: 60px;

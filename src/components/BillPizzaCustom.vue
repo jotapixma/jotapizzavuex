@@ -2,13 +2,16 @@
   <div class="detail-pizza-container">  
 
     <div class="pizza-detail">
-      <div class="col-lg-10">
+
+    <h3>Factura Menú "Pizzas personalizadas"</h3>
+
+      <div class="col-lg-10 ml-auto mr-auto mt-4">
         <div class="row">
           <div class="col-lg-4 left-side">
             <h5>Ingredientes</h5>
-            <div v-for="(pizza,index) in pizzasOrder">
+            <div v-for="(pizza,index) in pizzasOrder" :key="index">
               <ul> Pizza nro {{index+1}}
-                <li v-for="ingredient in pizza.ingredients">
+                <li v-for="ingredient in pizza.ingredients" :key="ingredient">
                   <span>- {{ ingredient.name }} </span>
                 </li>
               </ul>
@@ -16,9 +19,9 @@
           </div>
           <div class="col-lg-8 right-side">
             <h5>Precio</h5>
-            <div v-for="(pizza,index) in pizzasOrder" class="d-flex align-items-center justify-content-between">
+            <div v-for="(pizza,index) in pizzasOrder" :key="index" class="d-flex align-items-center justify-content-between">
               <ul> {{ pizza.basePrice }}$ (precio base)
-                <li v-for="ingredient in pizza.ingredients">
+                <li v-for="ingredient in pizza.ingredients" :key="ingredient">
                   <span>{{ ingredient.price }}$ </span>
                   <div @click="deleteIngredient(pizza, ingredient)">
                     <custom-icon name="x-circle" base-class="custom-icon"></custom-icon>
@@ -26,17 +29,18 @@
                 </li>
               </ul>
               <div @click="deleteOrder(index)">
-                <custom-icon name="trash-2" base-class="trash-icon"></custom-icon>
+                <p style="font-weight: bold;"> <custom-icon name="trash-2" base-class="trash-icon"></custom-icon> Eliminar pizza</p>
               </div>
             </div>
           </div>
         </div>
+
+        <h4 class="text-right mt-4" style="font-weight:bold">El monto total de su pedido es de: ${{ totalPizzasOrder }} </h4>
       </div>
   
     </div>
 
-    <h6>El monto total de su pedido es de: {{ totalPizzasOrder }} </h6>
-    <!-- <h6>El total de su pedido es de XYZ</h6> -->
+    
   </div>
 </template>
 
@@ -88,24 +92,28 @@
 </script>
 
 <style lang="stylus" scoped>
+  
 .v-icon,.custom-icon
   width: 15px
   color: red
   margin-left: 10px
   &:hover
     cursor: pointer
-.trash-icon
-  width: 50px
+p,.trash-icon
   &:hover
-    cursor: pointer
+      cursor: pointer
+.trash-icon
+  width: 30px
+  
 
 .detail-pizza-container
   padding-top: 30px
   .pizza-detail
+    background : #EDEDED
     list-style: none
-    border: 1px solid black
+    border: 2px solid black
     height: 100%
-    padding: 20px
+    padding: 2rem
     ul
       padding-left: 0
       list-style: none
