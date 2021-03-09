@@ -49,26 +49,13 @@
     data() {
       return {
         sliderIndex: 1,
-        // list: [
-        //   { backgroundImage: '@/assets/pizzas/Margarita.jpg' },
-        //   { backgroundImage: '@/assets/pizzas/Margarita.jpg', width: '100%', height: '100%' },
-        //   { backgroundImage: '@/assets/pizzas/Margarita.jpg', width: '100%', height: '100%' },
-        // ],
       }
     },
     methods: {  
       moveToIndex(index) {
-        console.log('culo',index)
         this.sliderIndex = index
       },
     },
   }
-</script>
 
 </script>
-
-<style lang="stylus" scoped>
-  slider-item
-    .img
-      img
-</style>

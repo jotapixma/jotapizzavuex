@@ -25,7 +25,7 @@ import SectionPizzaTypes from './SectionPizzaTypes.vue'
 import SectionIngredients from './SectionIngredients.vue'
 import SectionTeam from './SectionTeam.vue'
 import SectionHistory from './SectionHistory.vue'
-import Pizzaprice from './Pizzaprice.vue'
+// import Pizzaprice from './Pizzaprice.vue'
 import BannerJotaPizzas from './BannerJotaPizzas.vue'
 import SectionPizzaCustom from './SectionPizzaCustom.vue'
 import Footer from './Footer.vue'
@@ -42,7 +42,7 @@ export default {
   props: {},
   components : {
     HomeSlider,
-    Pizzaprice,
+    // Pizzaprice,
     SectionPizzaTypes,
     SectionIngredients,
     SectionTeam,
